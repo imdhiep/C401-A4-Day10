@@ -1,12 +1,12 @@
 # Báo Cáo Cá Nhân — Lab Day 10: Data Pipeline & Observability
 
-**Họ và tên:** Hoàng Quốc Chung  
+**Họ và tên:** Hoàng Quốc Chung - 2A202600070
 **Vai trò:** Cleaning & Quality Owner  
 **Ngày nộp:** 2026-04-15
 
 ---
 
-## 1. Tôi phụ trách phần nào?
+## 1. Phụ trách
 
 Tôi chịu trách nhiệm toàn bộ tầng **clean + validate** trong Sprint 2:
 
@@ -18,7 +18,7 @@ Kết nối với **Embed Owner** qua trường `cleaned_csv` trong manifest và
 
 ---
 
-## 2. Một quyết định kỹ thuật
+## 2. Quyết định kỹ thuật
 
 **Chọn halt cho cả E7 và E8, không phải warn.**
 
@@ -32,7 +32,7 @@ Tương tự, E7 (`published_text_no_operational_noise`) là `halt` vì nếu ch
 
 ---
 
-## 3. Một lỗi / anomaly đã xử lý
+## 3. Sự cố / anomaly
 
 **Triệu chứng:** File `cleaning_rules.py` ban đầu có **hai định nghĩa trùng** cho `clean_rows()` và `_norm_text()`. Python không báo lỗi — nó silently dùng định nghĩa thứ hai, khiến baseline `clean_rows()` trở thành dead code.
 
@@ -42,7 +42,7 @@ Tương tự, E7 (`published_text_no_operational_noise`) là `halt` vì nếu ch
 
 ---
 
-## 4. Bằng chứng trước / sau
+## 4. Before/after
 
 **Kịch bản:** chạy với rules 7/8 bị comment out (simulate trước khi có rule) → E7 FAIL halt:
 
@@ -65,6 +65,6 @@ Hai violations trước đó là: row 3 còn `"ghi chú: bản sync cũ policy-v
 
 ---
 
-## 5. Cải tiến tiếp theo
+## 5. Cải tiến thêm 2 giờ
 
-Nếu có thêm 2 giờ, tôi sẽ đọc `hr_leave_min_effective_date` và danh sách `_EDITORIAL_PREFIXES`, `_NOISE_NOTE_KEYWORDS` trực tiếp từ `contracts/data_contract.yaml` thay vì hard-code trong Python. Hiện tại cutoff `"2026-01-01"` và các keyword noise được viết cứng trong code — nếu policy thay đổi, phải sửa code. Đọc từ contract giúp rule versioning không hard-code và đáp ứng tiêu chí Distinction (d) trong SCORING.
+Đọc `hr_leave_min_effective_date` và danh sách `_EDITORIAL_PREFIXES`, `_NOISE_NOTE_KEYWORDS` trực tiếp từ `contracts/data_contract.yaml` thay vì hard-code trong Python. Hiện tại cutoff `"2026-01-01"` và các keyword noise được viết cứng trong code — nếu policy thay đổi, phải sửa code. Đọc từ contract giúp rule versioning không hard-code và đáp ứng tiêu chí Distinction (d) trong SCORING.
