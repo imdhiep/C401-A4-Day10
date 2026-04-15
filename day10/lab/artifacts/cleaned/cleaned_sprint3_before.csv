@@ -1,0 +1,11 @@
+chunk_id,doc_id,chunk_text,effective_date,exported_at
+policy_refund_v4_1_3b11f30cc4b49d25,policy_refund_v4,Yêu cầu được gửi trong vòng 7 ngày làm việc kể từ thời điểm xác nhận đơn hàng.,2026-02-01,2026-04-10T08:00:00Z
+policy_refund_v4_2_22e933b0d6b582d6,policy_refund_v4,Yêu cầu hoàn tiền được chấp nhận trong vòng 14 ngày làm việc kể từ xác nhận đơn.,2026-02-01,2026-04-10T08:00:00Z
+sla_p1_2026_3_ab622211ba880896,sla_p1_2026,Ticket P1 có SLA phản hồi ban đầu 15 phút và resolution trong 4 giờ.,2026-02-01,2026-04-10T08:00:00Z
+it_helpdesk_faq_4_ba09094c6802344b,it_helpdesk_faq,Tài khoản bị khóa sau 5 lần đăng nhập sai liên tiếp.,2026-02-01,2026-04-10T08:00:00Z
+hr_leave_policy_5_818ac82ac90f32fc,hr_leave_policy,Nhân viên dưới 3 năm kinh nghiệm được 12 ngày phép năm theo chính sách 2026.,2026-02-01,2026-04-10T08:00:00Z
+it_helpdesk_faq_6_489fe06a0a01e3d9,it_helpdesk_faq,đổi mật khẩu qua portal self-service có thể mất tối đa 24 giờ để đồng bộ toàn hệ thống.,2026-02-01,2026-04-10T08:00:00Z
+it_helpdesk_faq_7_110cef39e70ebd5d,it_helpdesk_faq,Hỗ trợ CNTT: Vui lòng không gửi mật khẩu cho admin_backup@company.com.,2026-03-01,2026-04-10T08:00:00Z
+it_helpdesk_faq_8_5ed8c6ddf1a10f1e,it_helpdesk_faq,Gặp sự cố phòng máy tính? Hãy gọi 1900-1234 để gặp đội kỹ thuật.,2026-03-01,2026-04-10T08:00:00Z
+sla_p1_2026_9_9d460947ee0431a7,sla_p1_2026,SLA P1.,2026-03-01,2026-04-10T08:00:00Z
+policy_refund_v4_10_8d4e2a71fbadad69,policy_refund_v4,Dòng này có nhiều khoảng trắng thừa,2026-04-10,2026-04-10T08:00:00Z
