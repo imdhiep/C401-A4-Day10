@@ -8,7 +8,16 @@ from __future__ import annotations
 
 import re
 from dataclasses import dataclass
+from datetime import datetime
 from typing import Any, Dict, List, Tuple
+
+
+def _is_iso_datetime(value: str) -> bool:
+    try:
+        datetime.fromisoformat(value)
+        return True
+    except Exception:
+        return False
 
 
 @dataclass
@@ -95,18 +104,45 @@ def run_expectations(cleaned_rows: List[Dict[str, Any]]) -> Tuple[List[Expectati
         )
     )
 
-    # E6: không còn marker phép năm cũ 10 ngày trên doc HR (conflict version sau clean)
+    # E6: exported_at hiện diện và parse được
+    missing_exported = [
+        r for r in cleaned_rows if not (r.get("exported_at") or "").strip()
+    ]
+    ok6 = len(missing_exported) == 0
+    results.append(
+        ExpectationResult(
+            "exported_at_present",
+            ok6,
+            "halt",
+            f"missing_exported_at={len(missing_exported)}",
+        )
+    )
+
+    invalid_exported = [
+        r for r in cleaned_rows if not _is_iso_datetime((r.get("exported_at") or "").strip())
+    ]
+    ok7 = len(invalid_exported) == 0
+    results.append(
+        ExpectationResult(
+            "exported_at_iso_format",
+            ok7,
+            "halt",
+            f"invalid_exported_at={len(invalid_exported)}",
+        )
+    )
+
+    # E8: không còn marker phép năm cũ 10 ngày trên doc HR (conflict version sau clean)
     bad_hr_annual = [
         r
         for r in cleaned_rows
         if r.get("doc_id") == "hr_leave_policy"
         and "10 ngày phép năm" in (r.get("chunk_text") or "")
     ]
-    ok6 = len(bad_hr_annual) == 0
+    ok8 = len(bad_hr_annual) == 0
     results.append(
         ExpectationResult(
             "hr_leave_no_stale_10d_annual",
-            ok6,
+            ok8,
             "halt",
             f"violations={len(bad_hr_annual)}",
         )
