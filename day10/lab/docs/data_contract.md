@@ -4,7 +4,7 @@
 
 ---
 
-## 1. Source map
+## 1. Nguồn dữ liệu (source map)
 
 | Nguồn | Phương thức ingest | Failure mode chính | Metric / alert |
 |-------|-------------------|-------------------|----------------|
