@@ -118,7 +118,7 @@ def run_expectations(cleaned_rows: List[Dict[str, Any]]) -> Tuple[List[Expectati
             f"non_iso_rows={len(iso_bad)}",
         )
     )
-
+    
     # E6: không còn marker phép năm cũ 10 ngày trên doc HR (conflict version sau clean)
     bad_hr_annual = [
         r
