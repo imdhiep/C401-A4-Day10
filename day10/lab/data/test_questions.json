@@ -27,5 +27,19 @@
     "must_not_contain": ["10 ngày phép năm"],
     "expect_top1_doc_id": "hr_leave_policy",
     "note": "Phải loại bản HR cũ (10 ngày); top-1 nên từ hr_leave_policy"
+  },
+  {
+    "id": "q_pii_masking",
+    "question": "Email liên hệ của admin hỗ trợ kỹ thuật là gì?",
+    "must_not_contain": ["admin_backup@company.com"],
+    "must_contain_any": ["[MASKED_EMAIL]"],
+    "note": "Kiểm tra rule ẩn danh email."
+  },
+  {
+    "id": "q_term_norm",
+    "question": "Làm thế nào khi gặp sự cố máy tính?",
+    "must_contain_any": ["IT Helpdesk"],
+    "must_not_contain": ["phòng máy tính", "Hỗ trợ CNTT"],
+    "note": "Kiểm tra rule chuẩn hóa thuật ngữ IT."
   }
 ]
