@@ -186,6 +186,16 @@ def _canonicalize_chunk_text(
     fixed, _ = _strip_editorial_prefix(fixed)
     # Rule 8: strip operational notes
     fixed, _ = _strip_operational_notes(fixed)
+    # Rule PII Masking
+    email_pattern = re.compile(r"[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+")
+    fixed = email_pattern.sub("[MASKED_EMAIL]", fixed)
+
+    # Rule Term Normalization (IT Helpdesk)
+    terms_to_fix = ["phòng máy tính", "hỗ trợ cntt", "đội kỹ thuật"]
+    for term in terms_to_fix:
+        if term in fixed.lower():
+            pattern = re.compile(re.escape(term), re.IGNORECASE)
+            fixed = pattern.sub("IT Helpdesk", fixed)
     # Rule 6 (baseline): fix stale refund window 14→7
     if apply_refund_window_fix and doc_id == "policy_refund_v4" and "14 ngày làm việc" in fixed:
         fixed = fixed.replace("14 ngày làm việc", "7 ngày làm việc")
